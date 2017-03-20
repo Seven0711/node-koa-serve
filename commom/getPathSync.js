@@ -2,10 +2,10 @@ const fs = require('fs');
 
 var fileList = [];
 
-var getPathsSync = async(path) => {
+var getPathsSync = (path) => {
 
   var dirList = fs.readdirSync(path);
-
+  console.log(dirList);
   dirList.forEach(function (item) {
     if (fs.statSync(path + '/' + item).isFile()) {
       let oldPath = path + '/' + item;
@@ -17,7 +17,6 @@ var getPathsSync = async(path) => {
     }
   });
 
-  // console.log(fileList)
   return fileList;
 };
 

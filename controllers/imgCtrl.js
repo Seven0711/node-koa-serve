@@ -9,8 +9,7 @@ const { uploadFile } = require('../commom/uploadImg');
 // 获取所有图片url
 const getImg = async(ctx, next) => {
     var imgList = [];
-    imgList = await getPath('../koa-server/static_img');
-    console.log(imgList);
+    imgList = await getPath('./static_img');
     ctx.body = {
         success: true,
         msg: 'images is there',

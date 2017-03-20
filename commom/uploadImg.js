@@ -4,7 +4,8 @@ const os = require('os');
 const fs = require('fs');
 const Busboy = require('busboy');
 
-/**
+/**参考自:
+ * https://chenshenhai.github.io/koa2-note/note/upload/pic-async.html
  * 同步创建文件目录
  * @param  {string} dirname 目录绝对地址
  * @return {boolean}        创建目录结果

@@ -5,15 +5,20 @@ const bodyParser = require('koa-bodyparser');
 const fs = require('fs');
 const registerControllers = require('./controllers/index');
 const KoaStatic = require('koa-static');
+const path = require('path');
 
 const router = new Router({
     prefix: '/webapi'
 });
 const app = new Koa();
-app.use(bodyParser());
+
+// app.use(bodyParser());
+app.use(bodyParser({formLimit: '5mb'}));
 
 require('koa-qs')(app, 'extended');
-app.use(KoaStatic(__dirname + '/static_img/'));
+app.use(KoaStatic('static_img'));
+// app.use(KoaStatic(__dirname + '/static_img'));
+// app.use(KoaStatic(path.join(__dirname, '/static_img')));
 
 // app.use(async(ctx, next) => {
 //     const start = new Date()

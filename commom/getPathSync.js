@@ -2,7 +2,7 @@ const fs = require('fs');
 
 var fileList = [];
 
-var getPathsSync = (path) => {
+var getPathsSync = async(path) => {
 
   var dirList = fs.readdirSync(path);
 

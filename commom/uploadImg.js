@@ -76,6 +76,7 @@ function uploadFile (ctx, options) {
         resolve(result);
       });
     });
+
     busboy.on('field', function (fieldname, val, fieldnameTruncated, valTruncated) {
       console.log(`Field [${fieldname}]: value: ${inspect(val)}`);
     });

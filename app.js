@@ -22,7 +22,7 @@ require('koa-qs')(app, 'extended');
 // 由于koa-static目前不支持koa2
 // 所以只能用koa-convert封装一下
 let newPath = path.join(__dirname,'/static_img/');
-console.log(newPath);
+
 app.use(convert(KoaStatic('static_img')));
 // app.use(convert(KoaStatic(path.join(__dirname, '/static_img'))))
 // app.use(KoaStatic(__dirname + '/static_img'));

@@ -12,16 +12,22 @@ const router = new Router({
 });
 const app = new Koa();
 
-// app.use(bodyParser());
+
 app.use(bodyParser({
-    formLimit: '5mb'
+    formLimit: '5mb',
+    detectJSON: (ctx) => {
+        return /\.json$/i.test(ctx.path);
+    },
+    extendTypes: {
+        json: ['application/json'] 
+    }
 }));
 
 require('koa-qs')(app, 'extended');
 // app.use(KoaStatic('static_img'));
 // 由于koa-static目前不支持koa2
 // 所以只能用koa-convert封装一下
-let newPath = path.join(__dirname,'/static_img/');
+let newPath = path.join(__dirname, '/static_img/');
 
 app.use(convert(KoaStatic('static_img')));
 // app.use(convert(KoaStatic(path.join(__dirname, '/static_img'))))

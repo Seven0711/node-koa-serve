@@ -4,7 +4,7 @@
  * @param {*} next 
  */
 const userReg = async(ctx, next) => {
-    console.log(ctx.request.body);//表单数据
+    console.log(ctx.request.body); //表单数据
     // console.log(ctx.request.body.name);
     let userData = ctx.request.body;
     // for (let key in userData) {
@@ -21,6 +21,30 @@ const userReg = async(ctx, next) => {
         msg: '注册成功',
         data: userData
     };
+    await next();
+};
+
+/**
+ * 用户登录
+ * @param {*} ctx 
+ * @param {*} next 
+ */
+const userLogin = async(ctx, next) => {
+    console.log(ctx.request.body);
+    let reqbody = ctx.request.body;
+    if (reqbody.username === 'zhanghao' && reqbody.password === '111111') {
+        ctx.body = {
+            msg: '登录成功',
+            statusCode: 0,
+            success: true
+        };
+    } else {
+        ctx.body = {
+            msg: '登录失败',
+            statusCode: 100,
+            success: false
+        };
+    }
     await next();
 };
 
@@ -64,11 +88,20 @@ const getUserById = async(ctx, next) => {
     await next();
 };
 
+const updatUser = async(ctx, next) => {
+    console.log(ctx.request.body);
+    ctx.body = {
+        success: true
+    }
+}
 
 //路由
 module.exports = (router) => {
     router.post('/user/register', userReg);
+    router.post('/login', userLogin);
     router.get('/user/userList', userList);
     router.get('/user/userInfo/:id', getUserById);
-    router.delete('/user/:id/user', getUserById);
+    router.delete('/user/:id', getUserById);
+    router.post('/user/update/:id', updatUser);
+    router.put('/user/update/:id', updatUser);
 };

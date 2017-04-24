@@ -4,7 +4,8 @@
   "description": "koa demo",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon start.js"
   },
   "keywords": [
     "koa"
@@ -24,6 +25,8 @@
     "koa-cors": "^0.0.16",
     "koa-qs": "^2.0.0",
     "koa-router": "7.0.0",
-    "koa-static": "^3.0.0"
+    "koa-static": "^3.0.0",
+    "node-zookeeper-client": "^0.2.2",
+    "node-zookeeper-dubbo": "^2.1.7"
   }
 }
